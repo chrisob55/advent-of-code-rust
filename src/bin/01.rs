@@ -1,13 +1,13 @@
 pub fn part_one(input: &str) -> Option<u32> {
     let vec: Vec<u32> = convert(input);
-    let max = vec.iter().cloned().max().unwrap();
-    let position = vec.iter().cloned().position(|item| item == max).unwrap();
-    Some(position as u32)
+    Some(vec.iter().cloned().max().unwrap())
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    let vec: Vec<u32> = convert(input);
-    Some(vec.iter().cloned().max().unwrap())
+    let mut vec: Vec<u32> = convert(input);
+    vec.sort();
+    vec.reverse();
+    Some(vec[0] + vec[1] + vec[2])
 }
 
 fn convert(input: &str) -> Vec<u32> {
